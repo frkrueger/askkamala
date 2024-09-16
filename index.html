@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ask Kamala</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 500px;
+        }
+        .response {
+            margin-top: 20px;
+            font-size: 18px;
+            font-style: italic;
+            color: #333;
+        }
+        .reset-btn {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="mb-4">Ask Kamala a Question</h1>
+        <form id="kamalaForm" class="mb-3">
+            <div class="mb-3">
+                <input type="text" id="question" class="form-control" placeholder="Type your question here..." required>
+            </div>
+            <button type="submit" class="btn btn-primary">Ask</button>
+        </form>
+        <div id="response" class="response"></div>
+        <button id="resetBtn" class="btn btn-success reset-btn" style="display:none;">Ask Another Question</button>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script>
+        const responses = [
+            "First of all, I grew up in a middle-class family, so I understand the importance of making things work.",
+            "When I was Attorney General, I learned firsthand how to fight for the people of this great state.",
+            "Let me start by saying, I have spent my entire career fighting for justice and equality.",
+            "As a former prosecutor, I know how to get things done and hold people accountable.",
+            "What’s important here is that we focus on the work we’ve been doing to lift up families across the nation.",
+            "We must remember that every decision we make affects the future of our children.",
+            "In this moment, we have an opportunity to build back better for everyone.",
+            "When I was in the Senate, I made it my mission to always put people first.",
+            "Look, this administration is about delivering real, tangible results for everyday Americans.",
+            "I’ve been to many communities across the country, and what I hear from people is, they want action.",
+            "My mother always told me, ‘You may be the first, but make sure you’re not the last,’ and that’s how I lead.",
+            "We are in a defining moment in history, and we cannot afford to go backward.",
+            "As someone who has fought for criminal justice reform, I understand what’s at stake.",
+            "Let’s be clear: we need to focus on bringing everyone to the table for solutions.",
+            "The real issue here is making sure we create pathways for opportunity, and I’ve always believed that.",
+            "I come from a family of strong women, so I know the value of resilience and determination.",
+            "As Vice President, I am proud of the work we’ve done, but there is so much more to do.",
+            "What I’ve seen across this country is that people are looking for leadership, and that’s what we provide.",
+            "Let me tell you, when I was traveling to small towns and meeting with folks, the message was loud and clear.",
+            "This is about more than just one issue—it’s about the soul of this nation and how we move forward together."
+        ];
+
+        document.getElementById('kamalaForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+            document.getElementById('response').textContent = randomResponse;
+            document.getElementById('resetBtn').style.display = 'block';
+        });
+
+        document.getElementById('resetBtn').addEventListener('click', function() {
+            document.getElementById('response').textContent = '';
+            document.getElementById('question').value = '';
+            document.getElementById('resetBtn').style.display = 'none';
+        });
+    </script>
+</body>
+</html>
